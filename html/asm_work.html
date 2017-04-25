@@ -1,0 +1,47 @@
+<!DOCTYYPE html>
+<html>
+<head>
+	<title>MAN ASM Corewar</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+	<header>
+		<strong id="title">ASM Corewar</strong><br/>
+		<h1>general command manual</h1>
+		<ul>
+			<li><a class=red href="index.html">HOME</a></li>
+			<li><a class=red href="asm_index.html">ASM</a></li>
+			<li><a class=red href="vm_index.html">VM</a></li>
+		</ul>
+	</header>
+
+	<header>
+		<ul>
+			<li><a class=red href="asm_index.html">The ASM</a></li>
+			<li><a class=red href="asm_work.html">How it works</a></li>
+			<li><a class=red href="asm_flags.html">Flags</a></li>
+		</ul>
+	</header>
+	<div id="bloc_page">
+		<section>
+		<blockquote>We will check if there are flags and if they are authorized. We also get the new name if the -n option is set. Any case there is no name specified after -n or if the flag is wrong or if there is no file (or more than 1 file), or if the format is not correct, we go to error.</blockquote>
+		<blockquote>We check the file format and we store the name of the file in the same time. We will read the file and store each line into a cmd structure, with the corresponding line number and so on.
+
+			Then we proceed to the recuperation of the basic informations: name and comment. We check if there are correct and store them if so. In any case there is a new name definition we also store the new name after checking it. In any case the requirements are not met we go to error.
+
+			We want the name and comment to be the first to useful lines (we do not care about empty and comment lines). Else we go to error.</blockquote>
+		<blockquote>We will store each line item for each cmd. We will have a list of each item in the cmd, with their type. Then we check if each item is of a correct type and also if the parameters (number and type) correspond to the instruction.</blockquote>
+		<blockquote>We will look each type of each item. If the item is an instruction we will set the corresponding opcode for its code (see file requirement's instructions). In cases of register or no label we will set the code of a parameter to its value (example: item = "r1" item-&gt;code = 1)</blockquote>
+		<blockquote>We will have a size for each cmd structure depending on the items it contains. We start at the address 0 and we increment per size. At the end we have the total size.
+
+			For the labels, we put the address of the corresponding label address into the item code.</blockquote>
+		<blockquote>
+			<p style="text-align: left;">We will then encode the needed instruction then create the binary. To create the bin, we look at each cmd. we add the value of the items code into the cmd binary.</p>
+		</blockquote>
+		<blockquote>We write the header then we write the binary of each command.</blockquote>
+		</section>
+	</div>
+
+</body>
+</html>

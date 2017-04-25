@@ -1,0 +1,12 @@
+ft_printf.c
+ft_printf_bracket.c
+ft_printf_detect.c
+ft_printf_flag.c
+ft_printf_format_cdbpercent.c
+ft_printf_format_oxup.c
+ft_printf_format_parse.c
+ft_printf_format_s.c
+ft_printf_format_s_2.c
+ft_printf_stringarg.c
+ft_printf_wchar.c
+ft_printf_wchar_2.c

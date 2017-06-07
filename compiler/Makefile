@@ -30,7 +30,6 @@ HEADER			= ./includes/asm.h ./includes/op.h ./libft/includes/libft.h\
 # Compiler and Flags
 
 CC				= gcc
-CFLAG			= -Wall -Wextra -Werror -O3
 ###############################################################################
 
 SRCS			= \
@@ -96,7 +95,7 @@ $(NAME): $(LFT) $(LFTPF) $(OBJ)
 	@echo "\n$(NAMING) $(GREEN)ASM COMPILER DONE ✓$(EOC)"
 
 %.o: %.c $(HEADER)
-	@$(CC) $(CFLAGS) $(INCL) -o $@ -c $<
+	@$(CC) $(INCL) -o $@ -c $<
 	@echo "$(YELLOW)█$(EOC)\c"
 
 $(LFT):

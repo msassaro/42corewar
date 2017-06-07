@@ -19,8 +19,6 @@
 # include "../libftprintf/includes/ft_printf.h"
 
 # define USER_MAN				"docs/user_man.md"
-# define AFP					system("afplay sfx/yeah.m4a&")
-# define STYLE					"docs/style.md"
 # define REQUIREMENTS			"docs/file_requirements.md"
 # define COMMENT_CHAR_2			';'
 # define LINE_LENGHT			1500
@@ -281,7 +279,6 @@ void			ft_binary_creation(t_env *e);
 ** write_infos_msg.c
 */
 
-void			ft_print_message(t_env *e);
 void			ft_print_infos(t_env *e);
 void			ft_write_outfile(t_env *e);
 

@@ -156,7 +156,7 @@ int		main(int ac, char **av)
 		ft_parse(&e);
 		ft_write_outfile(&e);
 		ft_print_infos(&e);
-		ft_print_message(&e);
+		ft_printf("asm: file {green}%s{eoc} created\n", e.output);
 	}
 	else
 		ft_printf_fd(2, "{red}asm: error: no input file\n\tuse ./asm -h\n");

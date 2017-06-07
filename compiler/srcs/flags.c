@@ -54,8 +54,6 @@ int		ft_flags_part2(char c)
 		g_flag_b = 1;
 	else if (c == 'd')
 		g_flag_d = 1;
-	else if (c == 's')
-		g_flag_s = 1;
 	else if (c == 'i')
 		g_flag_i = 1;
 	else if (c == 'k')

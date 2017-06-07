@@ -13,33 +13,6 @@
 #include "asm.h"
 
 /*
-** Ici on va printer le message de succes et de fin de compilation.
-** Si l'option style est active (-s) alors on va lancer la musique et
-** printer le contenu du fichier STYLE.
-*/
-
-void	ft_print_message(t_env *e)
-{
-	int		fd;
-	int		ret;
-	char	*line;
-
-	if (g_flag_s)
-	{
-		AFP;
-		fd = open(STYLE, O_RDONLY);
-		if (fd < 0)
-			ft_printf_fd(2, "error while trying to open %s\n", STYLE);
-		while ((ret = get_next_line(fd, &line)) > 0)
-		{
-			ft_putstr(line);
-			ft_putstr("\n");
-		}
-	}
-	ft_printf("asm: file {green}%s{eoc} created\n", e->output);
-}
-
-/*
 ** Ici on va print les informations concernant le champion que l'on vient
 ** de compiler.
 ** Si il y a eut une redefinition du nom alors on affiche l'ancien

@@ -12,11 +12,11 @@
 
 NAME			= libft.a
 
+CC				= gcc
 INCLUDE			= includes/
-CFLAGS			= -O3 -Wall -Werror -Wextra
-CC				= $(SILENCE)gcc
+CFLAGS			= -Wall -Werror -Wextra
 
-SRCS	= \
+SRCS			= \
 			ft_alloc_tab.c\
 			ft_atoi.c\
 			ft_atoi_base.c\
@@ -112,51 +112,52 @@ SRCDIR			= ./srcs/
 SRC				= $(addprefix $(SRCDIR), $(SRCS))
 OBJS			= $(SRC:.c=.o)
 
-V				= 0
-SILENCE_1		:=
-SILENCE_0		:=@
-SILENCE			= $(SILENCE_$(V))
+LIB				= ar rc
 
-LIB				= $(SILENCE)ar rc
-RM				= $(SILENCE)rm -rf
+################################################################################
 
-SKIP_1 			:=
-SKIP_0 			:= \033[A
-SKIP 			= $(SKIP_$(V))
-
-COLOR1			= \033[0;34m
-COLOR2			= \033[1;32m
-COLOR3			= \033[1;31m
+BLUE			= \033[0;34m
+LIGHTBLUE		= \033[0;36m
+GREEN			= \033[1;32m
+RED				= \033[1;31m
 EOC				= \033[0m
+YELLOW			= \033[33m
+WHITE			= \033[97m
+BG_BLUE			= \033[44m
 
-NAMING			= $(COLOR1)[$(NAME)]-------->
+ABOVE			= \033[A	# print on the line above
+ERASE			= \033[2K	# erase the line and go to next line
+
+NAMING			= $(BLUE)[ $(NAME) ]         ▶ 
+
+################################################################################
 
 all: $(NAME)
 
 $(NAME):$(OBJS)
-	@echo "$(NAMING)[Compile: $(COLOR2)DONE$(COLOR1)]$(EOC)"
-	@echo "$(NAMING)[Build Lib:$(COLOR2)"
-	$(LIB) $(NAME) $(OBJS)
+	@echo "$(NAMING)Compile ✔$(EOC)"
+	@$(LIB) $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "$(SKIP)$(NAMING)[Build:   $(COLOR2)DONE$(COLOR1)]$(EOC)"
+	@echo "$(NAMING)$(GREEN)LIBFT DONE ✔$(EOC)"
 
 %.o: %.c
-	@echo "$(NAMING)[Compile:$(COLOR3)$<\033[A\033[0m"
-	@echo "$(COLOR2)"
-	$(CC) $(CFLAGS) -I$(INCLUDE) -o $@ -c $<
-	@echo "$(COLOR3) [working]"
-	@echo "$(SKIP)\033[A\033[2K$(SKIP)"
+	@echo "$(NAMING)Compile $(LIGHTBLUE) $< $(ABOVE)"
+	@$(CC) $(CFLAGS) -I$(INCLUDE) -o $@ -c $<
+	@echo "$(NAMING)Compile"
+	@echo "$(ABOVE) $(ERASE) $(ABOVE)"
 
 clean:
-	@echo "$(NAMING)[Clean]\033[0;32m"
-	$(RM) $(OBJS)
-	@echo "$(SKIP)$(NAMING)[Clean:\033[1;32m   DONE$(COLOR1)]\033[0m"
+	@/bin/rm -rf $(OBJS)
+	@echo "$(SKIP)$(NAMING)Clean   ✔$(EOC)"
 
 fclean: clean
-	@echo "$(NAMING)[Fclean]\033[0;32m"
-	$(RM) $(NAME)
-	@echo "$(SKIP)$(NAMING)[Fclean:\033[1;32m  DONE$(COLOR1)]\033[0m"
+	@/bin/rm -rf $(NAME)
+	@echo "$(SKIP)$(NAMING)Fclean  ✔$(EOC)"
 
 re: fclean all
 
-.PHONY: clean fclean
+#.SILENT = everything is silent
+#.SILENT :
+
+#.PHONY = to be sure make will run in case a filename = rule
+.PHONY : all clean fclean re

@@ -85,8 +85,7 @@ BG_BLUE			= \033[44m
 ###############################################################################
 # Layout
 
-NAMING			= $(YELLOW)[$(NAME)]------------>
-NAMING2			= $(YELLOW)[$(NAME)] >>>>>>>>>>> 
+NAMING			= $(YELLOW)[ $(NAME) ]             ▶ 
 
 ###############################################################################
 
@@ -94,20 +93,7 @@ all: $(NAME)
 
 $(NAME): $(LFT) $(LFTPF) $(OBJ)
 	@$(CC) -o $(NAME) $(OBJ) $(LIBS)
-	@echo ""
-	@echo "$(NAMING2)[Compile: $(GREEN)DONE$(YELLOW)]$(EOC)"
-	@echo " "
-	@echo "   $(BG_BLUE)          $(EOC)    $(BG_BLUE)          $(EOC)    $(BG_BLUE)          $(EOC)    $(BG_BLUE)          $(EOC)"
-	@echo "   $(BG_BLUE)  $(EOC)            $(BG_BLUE)  $(EOC)      $(BG_BLUE)  $(EOC)    $(BG_BLUE)  $(EOC)      $(BG_BLUE)  $(EOC)    $(BG_BLUE)  $(EOC)"
-	@echo "   $(BG_BLUE)  $(EOC)            $(BG_BLUE)  $(EOC)      $(BG_BLUE)  $(EOC)    $(BG_BLUE)          $(EOC)    $(BG_BLUE)          $(EOC)"
-	@echo "   $(BG_BLUE)  $(EOC)            $(BG_BLUE)  $(EOC)      $(BG_BLUE)  $(EOC)    $(BG_BLUE)  $(EOC)  $(BG_BLUE)  $(EOC)        $(BG_BLUE)  $(EOC)"
-	@echo "   $(BG_BLUE)          $(EOC)    $(BG_BLUE)          $(EOC)    $(BG_BLUE)  $(EOC)    $(BG_BLUE)    $(EOC)    $(BG_BLUE)          $(EOC)"
-	@echo " "
-	@echo "$(BG_BLUE)                                                          $(EOC)"
-	@echo "$(BG_BLUE)$(WHITE)                       ASM Corewar                        $(EOC)"
-	@echo "$(BG_BLUE)$(WHITE)               fpasquer   jllosa   msassaro               $(EOC)"
-	@echo "$(BG_BLUE)                                                          $(EOC)"
-	@echo " "
+	@echo "\n$(NAMING) $(GREEN)ASM COMPILER DONE ✓$(EOC)"
 
 %.o: %.c $(HEADER)
 	@$(CC) $(CFLAGS) $(INCL) -o $@ -c $<
@@ -123,13 +109,13 @@ clean:
 	@make -C $(LFTDIR) clean
 	@make -C $(LFTPFDIR) clean
 	@rm -f $(OBJ)
-	@echo "$(NAMING)[Clean:   $(GREEN)DONE$(YELLOW)]$(EOC)"
+	@echo "$(NAMING)Clean  $(GREEN)✓$(EOC)"
 
 fclean: clean
 	@make -C $(LFTDIR) fclean
 	@make -C $(LFTPFDIR) fclean
 	@rm -f $(NAME)
-	@echo "$(NAMING)[Fclean:  $(GREEN)DONE$(YELLOW)]$(EOC)"
+	@echo "$(NAMING)Fclean  $(GREEN)✓$(EOC)"
 
 re: fclean all
 
